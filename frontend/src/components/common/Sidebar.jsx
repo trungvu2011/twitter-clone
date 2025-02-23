@@ -40,12 +40,6 @@ const Sidebar = () => {
         }
     });
 
-    const data = {
-        fullName: "John Doe",
-        username: "johndoe",
-        profileImg: "/avatars/boy1.png",
-    };
-
     const  {data: authUser} = useQuery({queryKey: ["authUser"]});
 
     return (
