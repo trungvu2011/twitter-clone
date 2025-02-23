@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import { v2 as cloudinary } from 'cloudinary';
 
 import authRoutes from './routes/auth.route.js';
@@ -23,6 +24,11 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // to parse req.body
 app.use(express.urlencoded({ extended: true })); // to parse form data (urlencoded)
+app.use(cors({
+    origin: "http://localhost:3000", // Frontend URL
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+}));
 
 app.use(cookieParser());
 
