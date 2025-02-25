@@ -20,7 +20,7 @@ const Sidebar = () => {
                 const data = await res.json();
 
                 if (!res.ok) {
-                    throw new Error(data.message || "Something went wrong!");
+                    throw new Error(data.error || "Something went wrong!");
                 }
 
                 if (data.error) {
@@ -33,14 +33,14 @@ const Sidebar = () => {
             }
         },
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["authUser"]});
+            queryClient.invalidateQueries({ queryKey: ["authUser"] });
         },
         onError: () => {
             toast.error("Logout failed");
         }
     });
 
-    const  {data: authUser} = useQuery({queryKey: ["authUser"]});
+    const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
     return (
         <div className='md:flex-[2_2_0] w-18 max-w-52'>
